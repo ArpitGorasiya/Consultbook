@@ -101,24 +101,6 @@ sequenceDiagram
   A-->>C: Send confirmation email asynchronously
 ```
 
-## Real-time flow
-
-```mermaid
-sequenceDiagram
-  participant U as User client
-  participant S as Socket.IO
-  participant M as MongoDB
-  participant A as Admin client
-  U->>S: Connect with short-lived access JWT
-  S->>S: Verify JWT; assign user room and admin room when applicable
-  U->>S: Join slots service/date
-  U->>M: Create booking hold
-  M-->>S: Transaction committed
-  S-->>U: slot:held
-  S-->>A: admin:new-booking
-  Note over U,M: On reconnect, refetch REST state; MongoDB is authoritative
-```
-
 ## Socket events
 
 | Name                | Direction                             | Payload                                                                  | Receiver                                                |
