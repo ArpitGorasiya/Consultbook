@@ -37,7 +37,7 @@ This guide deploys the API on Render and the Vite single-page client on Vercel. 
 
 1. In Vercel, import the same GitHub repository.
 2. Set **Root Directory** to `client`.
-3. Vercel should detect Vite. The checked-in `vercel.json` configures `npm run build`, output directory `dist`, and the SPA fallback to `index.html`.
+3. Vercel should detect Vite. `client/vercel.json` configures `npm run build`, output directory `dist`, and the SPA fallback to `index.html`. This file is inside the configured root so Vercel applies it to deep links such as `/admin` when the page is refreshed. The root `vercel.json` remains available if deploying with the repository root as the Vercel project root instead.
 4. Set these Vercel environment variables for Production (and Preview if you want deploy previews to call the API):
    - `VITE_API_URL=https://YOUR-RENDER-SERVICE.onrender.com/api/v1`
    - `VITE_SOCKET_URL=https://YOUR-RENDER-SERVICE.onrender.com`
